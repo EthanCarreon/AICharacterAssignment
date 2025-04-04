@@ -26,6 +26,7 @@ namespace NodeCanvas.Tasks.Conditions {
 		//Return whether the condition is success or failure.
 		protected override bool OnCheck() {
 
+			// check the amount of patrol rounds, if it is greater than the max rounds amount, return true
 			if (patrolRounds.value >= maxPatrolRounds.value)
 			{
                 return true;

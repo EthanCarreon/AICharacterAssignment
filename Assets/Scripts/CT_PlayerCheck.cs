@@ -4,11 +4,10 @@ using UnityEngine;
 
 namespace NodeCanvas.Tasks.Conditions {
 
-	public class CT_CheckPatrol : ConditionTask {
+	public class CT_PlayerCheck : ConditionTask {
 
-		public float timer;
-		public float maxTime;
-
+		public GameObject player;
+		public float interruptDist;
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
 		protected override string OnInit(){
@@ -28,19 +27,13 @@ namespace NodeCanvas.Tasks.Conditions {
 		//Called once per frame while the condition is active.
 		//Return whether the condition is success or failure.
 		protected override bool OnCheck() {
+			float distance = Vector3.Distance(agent.transform.position, player.transform.position);
 
-			// make a timer before the character starts patrolling
-			timer += Time.deltaTime;
-
-			if (timer >= maxTime)
+			if (distance <= interruptDist)
 			{
-                return true;
-            }
-			else
-			{
-				return false;
+				return true;
 			}
-			
+			return false;
 		}
 	}
 }
