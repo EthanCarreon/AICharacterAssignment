@@ -9,6 +9,7 @@ namespace NodeCanvas.Tasks.Actions {
 
 		public Transform startPos;
 		public float speed;
+		public float arrivalDist;
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
 		protected override string OnInit() {
@@ -26,6 +27,15 @@ namespace NodeCanvas.Tasks.Actions {
 
             Vector3 moveDirection = (startPos.position - agent.transform.position).normalized;
             agent.transform.position += moveDirection * speed * Time.deltaTime;
+
+			float distance = Vector3.Distance(agent.transform.position, startPos.position);
+
+			if (distance <= arrivalDist)
+			{
+				agent.gameObject.SetActive(false);
+				EndAction(true);
+			}
+
         }
 
 		//Called when the task is disabled.

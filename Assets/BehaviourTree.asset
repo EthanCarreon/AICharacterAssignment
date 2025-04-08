@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a686a47eee2fa44cb0a34b5d86e4d5e, type: 3}
+  m_Name: BehaviourTree
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_action":{"moveSpeed":{"_name":"moveSpeed","_targetVariableID":"619bf1d4-e92a-41e2-9978-f99f72f77004"},"changeDirectionTime":{"_name":"changeDirectionTime","_targetVariableID":"a521fa0d-c6c1-44cb-8e47-6c57dcf0bc20"},"center":{"_name":"center","_targetVariableID":"2bf165aa-522b-4219-a951-933ab6eab877"},"wanderRadius":{"_name":"wanderRadius","_targetVariableID":"1cbfdb2b-2528-4dd8-bc47-64dbc12eb2ef"},"$type":"NodeCanvas.Tasks.Actions.AT_Wander"},"_position":{"x":594.6666,"y":200.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode"}],"connections":[],"canvasGroups":[],"localBlackboard":{"_variables":{"moveSpeed":{"_value":3.0,"_name":"moveSpeed","_id":"619bf1d4-e92a-41e2-9978-f99f72f77004","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"changeDirectionTime":{"_value":0.1,"_name":"changeDirectionTime","_id":"a521fa0d-c6c1-44cb-8e47-6c57dcf0bc20","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"wanderRadius":{"_value":0.8,"_name":"wanderRadius","_id":"1cbfdb2b-2528-4dd8-bc47-64dbc12eb2ef","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
+  _objectReferences: []
+  _graphSource:
+    _version: 3.31
+    _category: 
+    _comments: 
+    _translation: {x: 0, y: 0}
+    _zoomFactor: 1
+  _haltSerialization: 0
+  _externalSerializationFile: {fileID: 0}
