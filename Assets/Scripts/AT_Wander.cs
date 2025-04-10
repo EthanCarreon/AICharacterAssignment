@@ -11,6 +11,9 @@ namespace NodeCanvas.Tasks.Actions
         public BBParameter<Transform> center;
         public BBParameter<float> wanderRadius = 5f;
 
+        public BBParameter<float> wanderTimer;
+        public float flyTime;
+
         private Vector3 wanderTarget;
         private float timeToNextDirection;
 
@@ -22,6 +25,7 @@ namespace NodeCanvas.Tasks.Actions
         protected override void OnUpdate()
         {
             timeToNextDirection -= Time.deltaTime;
+            wanderTimer.value += Time.deltaTime;
 
             if (timeToNextDirection <= 0f)
             {
@@ -30,6 +34,12 @@ namespace NodeCanvas.Tasks.Actions
 
             Vector3 moveDir = (wanderTarget - agent.transform.position).normalized;
             agent.transform.position += moveDir * moveSpeed.value * Time.deltaTime;
+
+            if (wanderTimer.value >= flyTime)
+            {
+                wanderTimer.value = 0f;
+                EndAction(true);
+            }
         }
 
         void PickNewWanderPoint()
