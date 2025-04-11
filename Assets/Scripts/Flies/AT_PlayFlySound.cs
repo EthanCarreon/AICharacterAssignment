@@ -19,6 +19,7 @@ namespace NodeCanvas.Tasks.Actions {
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() 
 		{
+			// enable the game object with the audio source to play sound
 			flyBuzz.value.SetActive(true);
 			EndAction(true);
 		}

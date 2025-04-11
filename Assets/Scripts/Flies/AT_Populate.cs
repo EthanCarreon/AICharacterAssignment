@@ -21,10 +21,15 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
+			// add one to the flies index
             fliesIndex.value++;
+
+			// if there are flies active and flies index value is less than the total count of flies in the list
 
             if (flies.value != null && fliesIndex.value < flies.value.Count)
             {
+
+				// set the next fly in the list to be visible
                 GameObject nextFly = flies.value[fliesIndex.value];
                 nextFly.SetActive(true); 
             }

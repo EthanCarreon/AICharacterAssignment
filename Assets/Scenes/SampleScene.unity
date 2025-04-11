@@ -2809,8 +2809,8 @@ MonoBehaviour:
     _version: 3.31
     _category: 
     _comments: 
-    _translation: {x: 435.58923, y: -28.533346}
-    _zoomFactor: 0.5037463
+    _translation: {x: 268, y: -55}
+    _zoomFactor: 0.70819527
   _firstActivation: 0
   _enableAction: 0
   _disableAction: 0
@@ -17641,6 +17641,7 @@ GameObject:
   - component: {fileID: 1886862969}
   - component: {fileID: 1886862968}
   - component: {fileID: 1886862967}
+  - component: {fileID: 1886862972}
   - component: {fileID: 1886862966}
   m_Layer: 0
   m_Name: Fly
@@ -17668,7 +17669,8 @@ MonoBehaviour:
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"flyBuzzSound":{"_value":9,"_name":"flyBuzzSound","_id":"7b8842a3-8a91-4c5a-8cbe-27e28dd7b3a5","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Player":{"_value":10,"_name":"Player","_id":"e65a2956-5da5-47bc-b700-1516473fb04b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"spray":{"_value":11,"_name":"spray","_id":"0871fba5-0e8b-4560-ab0c-a78b475388be","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"WanderData":{"_value":12,"_name":"WanderData","_id":"877145a7-9c6c-43e1-8df2-705b60a28977","$type":"NodeCanvas.Framework.Variable`1[[WanderData,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
   _objectReferences:
   - {fileID: 0}
   - {fileID: 834222725}
@@ -17682,6 +17684,7 @@ MonoBehaviour:
   - {fileID: 1433397835}
   - {fileID: 48630677}
   - {fileID: 1078022430}
+  - {fileID: 1886862972}
   _serializedVariables:
   - _json: '{"_value":1,"_name":"center","_id":"2bf165aa-522b-4219-a951-933ab6eab877","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
@@ -17715,6 +17718,11 @@ MonoBehaviour:
     _references:
     - {fileID: 0}
     - {fileID: 1078022430}
+  - _json: '{"_value":1,"_name":"WanderData","_id":"877145a7-9c6c-43e1-8df2-705b60a28977","$type":"NodeCanvas.Framework.Variable`1[[WanderData,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 1886862972}
 --- !u!114 &1886862967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17830,6 +17838,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 402601991}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1886862972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886862965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce92d21205bd1b408d69e6e49281415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  changeDirectionTime: 0.1
+  wanderRadius: 0.8
+  wanderTimer: 0
 --- !u!1 &1896634094
 GameObject:
   m_ObjectHideFlags: 0
