@@ -7,12 +7,11 @@ namespace NodeCanvas.Tasks.Actions
 {
     public class AT_Patrol : ActionTask 
     {
-        public BBParameter<List<Transform>> patrolPoints;
-        public BBParameter<int> maxPatrolRounds;
+
+        public BBParameter<PatrolData> patrolData;
         public BBParameter<float> speed = 3f;
         public float arrivalDistance = 1f;
 
-        public BBParameter<int> patrolRounds = 0;
         public int currentPatrolPointIndex = 0;
 
         protected override void OnExecute()
@@ -24,7 +23,7 @@ namespace NodeCanvas.Tasks.Actions
         protected override void OnUpdate()
         {
             // set a transform target patrol point within the array of patrol points
-            Transform targetPatrolPoint = patrolPoints.value[currentPatrolPointIndex];
+            Transform targetPatrolPoint = patrolData.value.patrolPoints[currentPatrolPointIndex];
 
             // check the distance between the character and the current target point
             float distanceToTarget = Vector3.Distance(agent.transform.position, targetPatrolPoint.position);
@@ -38,14 +37,14 @@ namespace NodeCanvas.Tasks.Actions
 
                 // if its greater than the count of indexes in the array, set it back to 0 so it can loop
                 // also add one to the patrol points int so it checks how many rounds it goes through (use for later)
-                if (currentPatrolPointIndex >= patrolPoints.value.Count)
+                if (currentPatrolPointIndex >= patrolData.value.patrolPoints.Count)
                 {
                     currentPatrolPointIndex = 0;
-                    patrolRounds.value++;
+                    patrolData.value.patrolRounds++;
                 }
 
                 // set the target patrol point transform value to the current index in the patrol points array
-                targetPatrolPoint = patrolPoints.value[currentPatrolPointIndex];
+                targetPatrolPoint = patrolData.value.patrolPoints[currentPatrolPointIndex];
             }
 
             // make a vector3 move direction variable to set the direction of where the character should go
@@ -55,7 +54,7 @@ namespace NodeCanvas.Tasks.Actions
             agent.transform.position += moveDirection * speed.value * Time.deltaTime;
 
             // if patrol rounds has reached enough rounds, end action
-            if (patrolRounds.value >= maxPatrolRounds.value)
+            if (patrolData.value.patrolRounds >= patrolData.value.maxPatrolRounds)
             {
                 EndAction(true);
             }

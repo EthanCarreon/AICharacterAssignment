@@ -2,27 +2,30 @@ using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 namespace NodeCanvas.Tasks.Actions
 {
     public class AT_PatrolTwo : ActionTask
     {
-        public BBParameter<List<Transform>> patrolPoints;
-        public BBParameter<int> maxPatrolRounds;
+        public BBParameter<PatrolData> patrolData;
         public BBParameter<float> speed = 3f;
         public float arrivalDistance = 1f;
 
-        public BBParameter<int> patrolRounds = 0;
         public int currentPatrolPointIndex = 0;
+
+        public GameObject exclamation;
 
         protected override void OnExecute()
         {
+            exclamation.SetActive(true);
             currentPatrolPointIndex = 0;
         }
 
+        // Code similar to AT_Patrol
         protected override void OnUpdate()
         {
-            Transform targetPatrolPoint = patrolPoints.value[currentPatrolPointIndex];
+            Transform targetPatrolPoint = patrolData.value.patrolPointsTwo[currentPatrolPointIndex];
 
             float distanceToTarget = Vector3.Distance(agent.transform.position, targetPatrolPoint.position);
 
@@ -30,19 +33,19 @@ namespace NodeCanvas.Tasks.Actions
             {
                 currentPatrolPointIndex = (currentPatrolPointIndex + 1);
 
-                if (currentPatrolPointIndex >= patrolPoints.value.Count)
+                if (currentPatrolPointIndex >= patrolData.value.patrolPointsTwo.Count)
                 {
                     currentPatrolPointIndex = 0;
-                    patrolRounds.value++;
+                    patrolData.value.patrolRoundsTwo++;
                 }
 
-                targetPatrolPoint = patrolPoints.value[currentPatrolPointIndex];
+                targetPatrolPoint = patrolData.value.patrolPointsTwo[currentPatrolPointIndex];
             }
 
             Vector3 moveDirection = (targetPatrolPoint.position - agent.transform.position).normalized;
             agent.transform.position += moveDirection * speed.value * Time.deltaTime;
 
-            if (patrolRounds.value >= maxPatrolRounds.value)
+            if (patrolData.value.patrolRoundsTwo >= patrolData.value.maxPatrolRounds)
             {
                 EndAction(true);
             }

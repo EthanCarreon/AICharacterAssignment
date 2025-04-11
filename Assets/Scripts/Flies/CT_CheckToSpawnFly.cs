@@ -1,38 +1,39 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
-
+using UnityEngine;
 
 namespace NodeCanvas.Tasks.Conditions {
 
-	public class CT_CheckPatrolRounds : ConditionTask {
+	public class CT_CheckToSpawnFly : ConditionTask {
 
-		public BBParameter<int> patrolRounds;
-        public BBParameter<int> maxPatrolRounds;
-        protected override string OnInit(){
+		public float timer;
+		public float maxTime;
+		//Use for initialization. This is called only once in the lifetime of the task.
+		//Return null if init was successfull. Return an error string otherwise
+		protected override string OnInit(){
 			return null;
 		}
 
 		//Called whenever the condition gets enabled.
 		protected override void OnEnable() {
-            
-        }
+
+		}
 
 		//Called whenever the condition gets disabled.
 		protected override void OnDisable() {
-
-        }
+			
+		}
 
 		//Called once per frame while the condition is active.
 		//Return whether the condition is success or failure.
 		protected override bool OnCheck() {
+            timer += Time.deltaTime;
 
-			// check the amount of patrol rounds, if it is greater than the max rounds amount, return true
-			if (patrolRounds.value >= maxPatrolRounds.value)
-			{
+            if (timer >= maxTime)
+            {
                 return true;
             }
             return false;
-
         }
 	}
 }
